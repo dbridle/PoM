@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PoMLibrary", "PoMLibrary\PoMLibrary.csproj", "{0AE69A0C-367D-4F64-9968-14C5657FEF6B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PoMToolkit", "PoMToolkit\PoMToolkit.csproj", "{0BC5E192-A5E3-402E-AEE4-DB1D6C2AA755}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0AE69A0C-367D-4F64-9968-14C5657FEF6B}.Debug|x86.ActiveCfg = Debug|x86
+		{0AE69A0C-367D-4F64-9968-14C5657FEF6B}.Debug|x86.Build.0 = Debug|x86
+		{0AE69A0C-367D-4F64-9968-14C5657FEF6B}.Release|x86.ActiveCfg = Release|x86
+		{0AE69A0C-367D-4F64-9968-14C5657FEF6B}.Release|x86.Build.0 = Release|x86
+		{0BC5E192-A5E3-402E-AEE4-DB1D6C2AA755}.Debug|x86.ActiveCfg = Debug|x86
+		{0BC5E192-A5E3-402E-AEE4-DB1D6C2AA755}.Debug|x86.Build.0 = Debug|x86
+		{0BC5E192-A5E3-402E-AEE4-DB1D6C2AA755}.Release|x86.ActiveCfg = Release|x86
+		{0BC5E192-A5E3-402E-AEE4-DB1D6C2AA755}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
