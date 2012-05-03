@@ -11,7 +11,6 @@ namespace PoMToolkit
 {
     public partial class BaseForm : Form
     {
-
         protected bool _saved;
 
         public bool Saved
@@ -24,18 +23,10 @@ namespace PoMToolkit
         {
         }
 
-        private void InitializeComponent()
-        {
-            this.SuspendLayout();
-            // 
-            // BaseForm
-            // 
-            this.ClientSize = new System.Drawing.Size(284, 262);
-            this.Name = "BaseForm";
-            this.ResumeLayout(false);
-
-        }
-
         
+        public BaseForm()
+        {
+            InitializeComponent();
+        }
     }
 }

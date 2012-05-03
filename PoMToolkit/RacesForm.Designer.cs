@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.loadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuLoad = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuSave = new System.Windows.Forms.ToolStripMenuItem();
             this.label1 = new System.Windows.Forms.Label();
             this.cbRaces = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -38,20 +38,20 @@
             this.label3 = new System.Windows.Forms.Label();
             this.txtRaceDescription = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.listBox1 = new System.Windows.Forms.ListBox();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
             this.lstStatModifiers = new System.Windows.Forms.ListBox();
+            this.btnRemoveModifier = new System.Windows.Forms.Button();
+            this.btnAddModifier = new System.Windows.Forms.Button();
+            this.txtModifierAmount = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.lstStats = new System.Windows.Forms.ListBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.rbWeakness = new System.Windows.Forms.RadioButton();
             this.rbResistance = new System.Windows.Forms.RadioButton();
             this.label5 = new System.Windows.Forms.Label();
-            this.listBox3 = new System.Windows.Forms.ListBox();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.lstWRs = new System.Windows.Forms.ListBox();
+            this.btnRemoveWR = new System.Windows.Forms.Button();
+            this.btnAddWR = new System.Windows.Forms.Button();
+            this.txtWRAmount = new System.Windows.Forms.TextBox();
             this.lstModifierTypes = new System.Windows.Forms.ListBox();
             this.btnClose = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
@@ -66,26 +66,28 @@
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.loadToolStripMenuItem,
-            this.saveToolStripMenuItem});
+            this.mnuLoad,
+            this.mnuSave});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(638, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
-            // loadToolStripMenuItem
+            // mnuLoad
             // 
-            this.loadToolStripMenuItem.Name = "loadToolStripMenuItem";
-            this.loadToolStripMenuItem.Size = new System.Drawing.Size(45, 20);
-            this.loadToolStripMenuItem.Text = "&Load";
+            this.mnuLoad.Name = "mnuLoad";
+            this.mnuLoad.Size = new System.Drawing.Size(45, 20);
+            this.mnuLoad.Text = "&Load";
+            this.mnuLoad.Click += new System.EventHandler(this.mnuLoad_Click);
             // 
-            // saveToolStripMenuItem
+            // mnuSave
             // 
-            this.saveToolStripMenuItem.Enabled = false;
-            this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(43, 20);
-            this.saveToolStripMenuItem.Text = "&Save";
+            this.mnuSave.Enabled = false;
+            this.mnuSave.Name = "mnuSave";
+            this.mnuSave.Size = new System.Drawing.Size(43, 20);
+            this.mnuSave.Text = "&Save";
+            this.mnuSave.Click += new System.EventHandler(this.mnuSave_Click);
             // 
             // label1
             // 
@@ -103,6 +105,7 @@
             this.cbRaces.Name = "cbRaces";
             this.cbRaces.Size = new System.Drawing.Size(165, 21);
             this.cbRaces.TabIndex = 2;
+            this.cbRaces.SelectedIndexChanged += new System.EventHandler(this.cbRaces_SelectedIndexChanged);
             // 
             // label2
             // 
@@ -139,12 +142,12 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.listBox1);
-            this.groupBox1.Controls.Add(this.button2);
-            this.groupBox1.Controls.Add(this.button1);
-            this.groupBox1.Controls.Add(this.textBox1);
-            this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.lstStatModifiers);
+            this.groupBox1.Controls.Add(this.btnRemoveModifier);
+            this.groupBox1.Controls.Add(this.btnAddModifier);
+            this.groupBox1.Controls.Add(this.txtModifierAmount);
+            this.groupBox1.Controls.Add(this.label4);
+            this.groupBox1.Controls.Add(this.lstStats);
             this.groupBox1.Location = new System.Drawing.Point(30, 235);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(596, 205);
@@ -152,38 +155,41 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Stat Modifiers";
             // 
-            // listBox1
+            // lstStatModifiers
             // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(407, 19);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(171, 173);
-            this.listBox1.TabIndex = 5;
+            this.lstStatModifiers.FormattingEnabled = true;
+            this.lstStatModifiers.Location = new System.Drawing.Point(407, 19);
+            this.lstStatModifiers.Name = "lstStatModifiers";
+            this.lstStatModifiers.Size = new System.Drawing.Size(171, 173);
+            this.lstStatModifiers.TabIndex = 5;
             // 
-            // button2
+            // btnRemoveModifier
             // 
-            this.button2.Location = new System.Drawing.Point(316, 89);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 4;
-            this.button2.Text = "<<";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnRemoveModifier.Location = new System.Drawing.Point(316, 89);
+            this.btnRemoveModifier.Name = "btnRemoveModifier";
+            this.btnRemoveModifier.Size = new System.Drawing.Size(75, 23);
+            this.btnRemoveModifier.TabIndex = 4;
+            this.btnRemoveModifier.Text = "<<";
+            this.btnRemoveModifier.UseVisualStyleBackColor = true;
+            this.btnRemoveModifier.Click += new System.EventHandler(this.btnRemoveModifier_Click);
             // 
-            // button1
+            // btnAddModifier
             // 
-            this.button1.Location = new System.Drawing.Point(316, 53);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 3;
-            this.button1.Text = ">>";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnAddModifier.Location = new System.Drawing.Point(316, 53);
+            this.btnAddModifier.Name = "btnAddModifier";
+            this.btnAddModifier.Size = new System.Drawing.Size(75, 23);
+            this.btnAddModifier.TabIndex = 3;
+            this.btnAddModifier.Text = ">>";
+            this.btnAddModifier.UseVisualStyleBackColor = true;
+            this.btnAddModifier.Click += new System.EventHandler(this.btnAddModifier_Click);
             // 
-            // textBox1
+            // txtModifierAmount
             // 
-            this.textBox1.Location = new System.Drawing.Point(203, 74);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 2;
+            this.txtModifierAmount.Location = new System.Drawing.Point(203, 74);
+            this.txtModifierAmount.Name = "txtModifierAmount";
+            this.txtModifierAmount.Size = new System.Drawing.Size(100, 20);
+            this.txtModifierAmount.TabIndex = 2;
+            this.txtModifierAmount.TextChanged += new System.EventHandler(this.CheckModifierAmount);
             // 
             // label4
             // 
@@ -194,23 +200,23 @@
             this.label4.TabIndex = 1;
             this.label4.Text = "Amount";
             // 
-            // lstStatModifiers
+            // lstStats
             // 
-            this.lstStatModifiers.FormattingEnabled = true;
-            this.lstStatModifiers.Location = new System.Drawing.Point(6, 19);
-            this.lstStatModifiers.Name = "lstStatModifiers";
-            this.lstStatModifiers.Size = new System.Drawing.Size(177, 173);
-            this.lstStatModifiers.TabIndex = 0;
+            this.lstStats.FormattingEnabled = true;
+            this.lstStats.Location = new System.Drawing.Point(6, 19);
+            this.lstStats.Name = "lstStats";
+            this.lstStats.Size = new System.Drawing.Size(177, 173);
+            this.lstStats.TabIndex = 0;
             // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.rbWeakness);
             this.groupBox2.Controls.Add(this.rbResistance);
             this.groupBox2.Controls.Add(this.label5);
-            this.groupBox2.Controls.Add(this.listBox3);
-            this.groupBox2.Controls.Add(this.button3);
-            this.groupBox2.Controls.Add(this.button4);
-            this.groupBox2.Controls.Add(this.textBox2);
+            this.groupBox2.Controls.Add(this.lstWRs);
+            this.groupBox2.Controls.Add(this.btnRemoveWR);
+            this.groupBox2.Controls.Add(this.btnAddWR);
+            this.groupBox2.Controls.Add(this.txtWRAmount);
             this.groupBox2.Controls.Add(this.lstModifierTypes);
             this.groupBox2.Location = new System.Drawing.Point(30, 446);
             this.groupBox2.Name = "groupBox2";
@@ -250,38 +256,41 @@
             this.label5.TabIndex = 11;
             this.label5.Text = "Amount";
             // 
-            // listBox3
+            // lstWRs
             // 
-            this.listBox3.FormattingEnabled = true;
-            this.listBox3.Location = new System.Drawing.Point(407, 19);
-            this.listBox3.Name = "listBox3";
-            this.listBox3.Size = new System.Drawing.Size(171, 173);
-            this.listBox3.TabIndex = 10;
+            this.lstWRs.FormattingEnabled = true;
+            this.lstWRs.Location = new System.Drawing.Point(407, 19);
+            this.lstWRs.Name = "lstWRs";
+            this.lstWRs.Size = new System.Drawing.Size(171, 173);
+            this.lstWRs.TabIndex = 10;
             // 
-            // button3
+            // btnRemoveWR
             // 
-            this.button3.Location = new System.Drawing.Point(316, 89);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 9;
-            this.button3.Text = "<<";
-            this.button3.UseVisualStyleBackColor = true;
+            this.btnRemoveWR.Location = new System.Drawing.Point(316, 89);
+            this.btnRemoveWR.Name = "btnRemoveWR";
+            this.btnRemoveWR.Size = new System.Drawing.Size(75, 23);
+            this.btnRemoveWR.TabIndex = 9;
+            this.btnRemoveWR.Text = "<<";
+            this.btnRemoveWR.UseVisualStyleBackColor = true;
+            this.btnRemoveWR.Click += new System.EventHandler(this.btnRemoveWR_Click);
             // 
-            // button4
+            // btnAddWR
             // 
-            this.button4.Location = new System.Drawing.Point(316, 53);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(75, 23);
-            this.button4.TabIndex = 8;
-            this.button4.Text = ">>";
-            this.button4.UseVisualStyleBackColor = true;
+            this.btnAddWR.Location = new System.Drawing.Point(316, 53);
+            this.btnAddWR.Name = "btnAddWR";
+            this.btnAddWR.Size = new System.Drawing.Size(75, 23);
+            this.btnAddWR.TabIndex = 8;
+            this.btnAddWR.Text = ">>";
+            this.btnAddWR.UseVisualStyleBackColor = true;
+            this.btnAddWR.Click += new System.EventHandler(this.btnAddWR_Click);
             // 
-            // textBox2
+            // txtWRAmount
             // 
-            this.textBox2.Location = new System.Drawing.Point(203, 74);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 20);
-            this.textBox2.TabIndex = 7;
+            this.txtWRAmount.Location = new System.Drawing.Point(203, 74);
+            this.txtWRAmount.Name = "txtWRAmount";
+            this.txtWRAmount.Size = new System.Drawing.Size(100, 20);
+            this.txtWRAmount.TabIndex = 7;
+            this.txtWRAmount.TextChanged += new System.EventHandler(this.CheckWRAmount);
             // 
             // lstModifierTypes
             // 
@@ -290,6 +299,7 @@
             this.lstModifierTypes.Name = "lstModifierTypes";
             this.lstModifierTypes.Size = new System.Drawing.Size(177, 173);
             this.lstModifierTypes.TabIndex = 6;
+            this.lstModifierTypes.SelectedIndexChanged += new System.EventHandler(this.lstWRs_SelectedIndexChanged);
             // 
             // btnClose
             // 
@@ -299,6 +309,7 @@
             this.btnClose.TabIndex = 23;
             this.btnClose.Text = "Close";
             this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // btnDelete
             // 
@@ -308,6 +319,7 @@
             this.btnDelete.TabIndex = 22;
             this.btnDelete.Text = "Delete";
             this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // btnUpdate
             // 
@@ -359,6 +371,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "RacesForm";
             this.Text = "RacesForm";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.RacesForm_FormClosing);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.groupBox1.ResumeLayout(false);
@@ -373,8 +386,8 @@
         #endregion
 
         private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem loadToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem mnuLoad;
+        private System.Windows.Forms.ToolStripMenuItem mnuSave;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox cbRaces;
         private System.Windows.Forms.Label label2;
@@ -382,20 +395,20 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtRaceDescription;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.ListBox listBox1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ListBox lstStatModifiers;
+        private System.Windows.Forms.Button btnRemoveModifier;
+        private System.Windows.Forms.Button btnAddModifier;
+        private System.Windows.Forms.TextBox txtModifierAmount;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.ListBox lstStats;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.RadioButton rbWeakness;
         private System.Windows.Forms.RadioButton rbResistance;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.ListBox listBox3;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.ListBox lstWRs;
+        private System.Windows.Forms.Button btnRemoveWR;
+        private System.Windows.Forms.Button btnAddWR;
+        private System.Windows.Forms.TextBox txtWRAmount;
         private System.Windows.Forms.ListBox lstModifierTypes;
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.Button btnDelete;

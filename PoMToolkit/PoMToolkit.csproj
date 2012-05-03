@@ -115,9 +115,6 @@
     <Compile Include="StatsForm.Designer.cs">
       <DependentUpon>StatsForm.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="BaseForm.resx">
-      <DependentUpon>BaseForm.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="CalculatedStatConfigForm.resx">
       <DependentUpon>CalculatedStatConfigForm.cs</DependentUpon>
     </EmbeddedResource>
