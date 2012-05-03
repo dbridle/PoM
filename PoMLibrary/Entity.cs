@@ -6,7 +6,7 @@ using System.Text;
 
 namespace PoMLibrary
 {
-    class Entity
+    public class Entity
     {
 
         #region Members

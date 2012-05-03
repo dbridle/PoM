@@ -166,6 +166,20 @@ namespace PoMToolkit
                 frm.Activate();
         }
 
+        private void ShowClassesForm(object sender, EventArgs e)
+        {
+
+            BaseForm frm = GetChildForm("ClassesForm");
+
+            if (frm == null)
+            {
+                frm = new ClassesForm(_game.GameName);
+                frm.MdiParent = this;
+                frm.Show();
+            }
+            else
+                frm.Activate();
+        }
 
     }
 }

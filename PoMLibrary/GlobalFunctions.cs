@@ -58,8 +58,49 @@ namespace PoMLibrary
             }
         }
 
+        public static Entity LoadEntity(string filename)
+        {
+            try
+            {
+                XmlReaderSettings settings = new XmlReaderSettings();
 
-        
+                settings.CloseInput = true;
+
+                XmlReader reader = XmlReader.Create(new FileStream(filename, FileMode.Open), settings);
+
+                Entity entity = IntermediateSerializer.Deserialize<Entity>(reader, null);
+
+                reader.Close();
+
+                return entity;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+
+        public static EntityClass LoadClass(string filename)
+        {
+            try
+            {
+                XmlReaderSettings settings = new XmlReaderSettings();
+
+                settings.CloseInput = true;
+
+                XmlReader reader = XmlReader.Create(new FileStream(filename, FileMode.Open), settings);
+
+                EntityClass entityclass = IntermediateSerializer.Deserialize<EntityClass>(reader, null);
+
+                reader.Close();
+
+                return entityclass;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
 
 
     }

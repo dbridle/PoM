@@ -34,6 +34,9 @@
             this.mnuNewGame = new System.Windows.Forms.ToolStripMenuItem();
             this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuStats = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuRaces = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuClasses = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuEntities = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
@@ -42,9 +45,6 @@
             this.tbRaces = new System.Windows.Forms.ToolStripButton();
             this.tbClasses = new System.Windows.Forms.ToolStripButton();
             this.tbEntity = new System.Windows.Forms.ToolStripButton();
-            this.mnuRaces = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuClasses = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuEntities = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -75,14 +75,14 @@
             // mnuNewGame
             // 
             this.mnuNewGame.Name = "mnuNewGame";
-            this.mnuNewGame.Size = new System.Drawing.Size(152, 22);
+            this.mnuNewGame.Size = new System.Drawing.Size(103, 22);
             this.mnuNewGame.Text = "New";
             this.mnuNewGame.Click += new System.EventHandler(this.NewGame);
             // 
             // openToolStripMenuItem
             // 
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
             this.openToolStripMenuItem.Text = "Open";
             this.openToolStripMenuItem.Click += new System.EventHandler(this.OpenGame);
             // 
@@ -93,6 +93,29 @@
             this.mnuStats.Size = new System.Drawing.Size(44, 20);
             this.mnuStats.Text = "&Stats";
             this.mnuStats.Click += new System.EventHandler(this.ShowStatsForm);
+            // 
+            // mnuRaces
+            // 
+            this.mnuRaces.Enabled = false;
+            this.mnuRaces.Name = "mnuRaces";
+            this.mnuRaces.Size = new System.Drawing.Size(49, 20);
+            this.mnuRaces.Text = "&Races";
+            this.mnuRaces.Click += new System.EventHandler(this.ShowRacesForm);
+            // 
+            // mnuClasses
+            // 
+            this.mnuClasses.Enabled = false;
+            this.mnuClasses.Name = "mnuClasses";
+            this.mnuClasses.Size = new System.Drawing.Size(57, 20);
+            this.mnuClasses.Text = "&Classes";
+            this.mnuClasses.Click += new System.EventHandler(this.ShowClassesForm);
+            // 
+            // mnuEntities
+            // 
+            this.mnuEntities.Enabled = false;
+            this.mnuEntities.Name = "mnuEntities";
+            this.mnuEntities.Size = new System.Drawing.Size(57, 20);
+            this.mnuEntities.Text = "Entities";
             // 
             // toolStrip1
             // 
@@ -166,6 +189,7 @@
             this.tbClasses.Name = "tbClasses";
             this.tbClasses.Size = new System.Drawing.Size(23, 22);
             this.tbClasses.Text = "toolStripButton3";
+            this.tbClasses.Click += new System.EventHandler(this.ShowClassesForm);
             // 
             // tbEntity
             // 
@@ -176,28 +200,6 @@
             this.tbEntity.Name = "tbEntity";
             this.tbEntity.Size = new System.Drawing.Size(23, 22);
             this.tbEntity.Text = "toolStripButton3";
-            // 
-            // mnuRaces
-            // 
-            this.mnuRaces.Enabled = false;
-            this.mnuRaces.Name = "mnuRaces";
-            this.mnuRaces.Size = new System.Drawing.Size(49, 20);
-            this.mnuRaces.Text = "&Races";
-            this.mnuRaces.Click += new System.EventHandler(this.ShowRacesForm);
-            // 
-            // mnuClasses
-            // 
-            this.mnuClasses.Enabled = false;
-            this.mnuClasses.Name = "mnuClasses";
-            this.mnuClasses.Size = new System.Drawing.Size(57, 20);
-            this.mnuClasses.Text = "&Classes";
-            // 
-            // mnuEntities
-            // 
-            this.mnuEntities.Enabled = false;
-            this.mnuEntities.Name = "mnuEntities";
-            this.mnuEntities.Size = new System.Drawing.Size(57, 20);
-            this.mnuEntities.Text = "Entities";
             // 
             // MainForm
             // 

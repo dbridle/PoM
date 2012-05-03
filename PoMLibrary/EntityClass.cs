@@ -5,7 +5,7 @@ using System.Text;
 
 namespace PoMLibrary
 {
-    class EntityClass
+    public class EntityClass
     {
         private string _name = "";
         private string _description = "";
