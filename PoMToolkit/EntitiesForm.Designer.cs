@@ -86,6 +86,13 @@
             this.btnNew = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
             this.btnPortraitFilename = new System.Windows.Forms.Button();
+            this.label21 = new System.Windows.Forms.Label();
+            this.cbSkills = new System.Windows.Forms.ComboBox();
+            this.btnSkills = new System.Windows.Forms.Button();
+            this.btnStats = new System.Windows.Forms.Button();
+            this.txtCurSP = new System.Windows.Forms.TextBox();
+            this.txtBaseSP = new System.Windows.Forms.TextBox();
+            this.label22 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -601,11 +608,78 @@
             this.btnPortraitFilename.UseVisualStyleBackColor = true;
             this.btnPortraitFilename.Click += new System.EventHandler(this.btnPortraitFilename_Click);
             // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Location = new System.Drawing.Point(63, 415);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(31, 13);
+            this.label21.TabIndex = 56;
+            this.label21.Text = "Skills";
+            // 
+            // cbSkills
+            // 
+            this.cbSkills.FormattingEnabled = true;
+            this.cbSkills.Location = new System.Drawing.Point(171, 412);
+            this.cbSkills.Name = "cbSkills";
+            this.cbSkills.Size = new System.Drawing.Size(140, 21);
+            this.cbSkills.TabIndex = 57;
+            // 
+            // btnSkills
+            // 
+            this.btnSkills.Location = new System.Drawing.Point(317, 410);
+            this.btnSkills.Name = "btnSkills";
+            this.btnSkills.Size = new System.Drawing.Size(35, 23);
+            this.btnSkills.TabIndex = 58;
+            this.btnSkills.Text = "...";
+            this.btnSkills.UseVisualStyleBackColor = true;
+            this.btnSkills.Click += new System.EventHandler(this.btnSkills_Click);
+            // 
+            // btnStats
+            // 
+            this.btnStats.Location = new System.Drawing.Point(321, 321);
+            this.btnStats.Name = "btnStats";
+            this.btnStats.Size = new System.Drawing.Size(35, 23);
+            this.btnStats.TabIndex = 59;
+            this.btnStats.Text = "...";
+            this.btnStats.UseVisualStyleBackColor = true;
+            this.btnStats.Click += new System.EventHandler(this.btnStats_Click);
+            // 
+            // txtCurSP
+            // 
+            this.txtCurSP.Location = new System.Drawing.Point(247, 383);
+            this.txtCurSP.Name = "txtCurSP";
+            this.txtCurSP.Size = new System.Drawing.Size(64, 20);
+            this.txtCurSP.TabIndex = 62;
+            // 
+            // txtBaseSP
+            // 
+            this.txtBaseSP.Location = new System.Drawing.Point(171, 383);
+            this.txtBaseSP.Name = "txtBaseSP";
+            this.txtBaseSP.Size = new System.Drawing.Size(64, 20);
+            this.txtBaseSP.TabIndex = 61;
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Location = new System.Drawing.Point(63, 386);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(69, 13);
+            this.label22.TabIndex = 60;
+            this.label22.Text = "Base/Cur SP";
+            // 
             // EntitiesForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(850, 483);
+            this.Controls.Add(this.txtCurSP);
+            this.Controls.Add(this.txtBaseSP);
+            this.Controls.Add(this.label22);
+            this.Controls.Add(this.btnStats);
+            this.Controls.Add(this.btnSkills);
+            this.Controls.Add(this.cbSkills);
+            this.Controls.Add(this.label21);
             this.Controls.Add(this.btnPortraitFilename);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.btnDelete);
@@ -662,9 +736,12 @@
             this.Controls.Add(this.cbEntities);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.menuStrip1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "EntitiesForm";
-            this.Text = "EntitiesForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
+            this.Text = "Entities";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.EntitiesForm_FormClosing);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -732,5 +809,12 @@
         private System.Windows.Forms.Button btnNew;
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.Button btnPortraitFilename;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.ComboBox cbSkills;
+        private System.Windows.Forms.Button btnSkills;
+        private System.Windows.Forms.Button btnStats;
+        private System.Windows.Forms.TextBox txtCurSP;
+        private System.Windows.Forms.TextBox txtBaseSP;
+        private System.Windows.Forms.Label label22;
     }
 }

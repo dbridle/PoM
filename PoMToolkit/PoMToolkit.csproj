@@ -133,11 +133,29 @@
     <Compile Include="RacesForm.Designer.cs">
       <DependentUpon>RacesForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="SkillsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SkillsForm.Designer.cs">
+      <DependentUpon>SkillsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SkillsSelectionForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SkillsSelectionForm.Designer.cs">
+      <DependentUpon>SkillsSelectionForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="StatsForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="StatsForm.Designer.cs">
       <DependentUpon>StatsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="StatsGeneratorForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StatsGeneratorForm.Designer.cs">
+      <DependentUpon>StatsGeneratorForm.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="BonusesForm.resx">
       <DependentUpon>BonusesForm.cs</DependentUpon>
@@ -176,8 +194,17 @@
     <EmbeddedResource Include="RacesForm.resx">
       <DependentUpon>RacesForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="SkillsForm.resx">
+      <DependentUpon>SkillsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SkillsSelectionForm.resx">
+      <DependentUpon>SkillsSelectionForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="StatsForm.resx">
       <DependentUpon>StatsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StatsGeneratorForm.resx">
+      <DependentUpon>StatsGeneratorForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.config" />
     <None Include="Properties\Settings.settings">
@@ -211,6 +238,9 @@
       <ProductName>Windows Installer 3.1</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="EntityLevelData.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

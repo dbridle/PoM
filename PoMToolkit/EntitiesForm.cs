@@ -45,6 +45,9 @@ namespace PoMToolkit
 
         private List<EntityLevel> _levels;
 
+        private Dictionary<int, Skill> _skills;
+        private Dictionary<int, int> _entitySkills;
+
         public EntitiesForm(string GameName)
         {
             InitializeComponent();
@@ -56,6 +59,12 @@ namespace PoMToolkit
             cbRace.Items.Clear();
             cbClass.Items.Add("N/A");
             cbRace.Items.Add("N/A");
+
+            // Get a list of the enums for EntityType
+            cbType.Items.AddRange(Enum.GetNames(typeof(EntityType)));
+
+            // Get list of the enums for Alignment
+            cbAlignment.Items.AddRange(Enum.GetNames(typeof(EntityAlignment)));
 
             string[] files = Directory.GetFiles(Application.StartupPath + @"\Games\" + _gameName + @"\classes");
 
@@ -70,6 +79,18 @@ namespace PoMToolkit
                         _classes.Add(entityClass);
                         cbClass.Items.Add(entityClass.Name);
                     }
+            }
+
+            _stats = new List<Stat>();
+
+            files = Directory.GetFiles(Application.StartupPath + @"\Games\" + _gameName + @"\stats");
+
+            foreach (string file in files)
+            {
+                Stat stat = GlobalFunctions.LoadStat(file);
+
+                if (stat != null)
+                    _stats.Add(stat);
             }
 
             files = Directory.GetFiles(Application.StartupPath + @"\Games\" + _gameName + @"\races");
@@ -98,7 +119,7 @@ namespace PoMToolkit
                 if (entity != null)
                 {
                     _entities.Add(entity);
-                    cbRace.Items.Add(entity.Name);
+                    cbEntities.Items.Add(entity.Name);
                 }
             }
 
@@ -117,6 +138,20 @@ namespace PoMToolkit
                     _levels.Add(new EntityLevel(Convert.ToInt32(node.Attributes["MinExp"].Value), Convert.ToInt32(node.Attributes["MaxExp"].Value)));
 
                 stream.Close();
+            }
+
+            _entitySkills = new Dictionary<int, int>();
+
+            _skills = new Dictionary<int, Skill>();
+
+            files = Directory.GetFiles(Application.StartupPath + @"\Games\" + _gameName + @"\skills");
+
+            foreach (string file in files)
+            {
+                Skill skill = GlobalFunctions.LoadSkill(file);
+
+                if (skill != null)
+                    _skills.Add(skill.ID, skill);
             }
         }
 
@@ -155,8 +190,12 @@ namespace PoMToolkit
             entity.SetOffensiveBonuses(_offBonuses);
             entity.SetDefensiveBonuses(_defBonuses);
             entity.SetMiscBonuses(_miscBonuses);
-            entity.SetDamageResistnaces(_damageResistances);
+            entity.SetDamageResistances(_damageResistances);
             entity.SetDamageWeaknesses(_damageWeaknesses);
+
+            entity.Skills = _entitySkills;
+            entity.BaseSP = Convert.ToInt32(txtBaseHP.Text);
+            entity.CurSP = Convert.ToInt32(txtCurHP.Text);
         }
 
         private void SetupFormForEntry()
@@ -542,7 +581,77 @@ namespace PoMToolkit
                 _saved = false;
             }
         }
-               
 
+        private void btnStats_Click(object sender, EventArgs e)
+        {
+            Dictionary<string, int> raceStatMods = null;
+            Dictionary<string, int> classStatMods = null;
+
+            if (cbRace.SelectedIndex > 0)
+                raceStatMods = _races[cbRace.SelectedIndex - 1].GetStatMods();
+
+            if (cbRace.SelectedIndex > 0)
+                classStatMods = _classes[cbClass.SelectedIndex - 1].GetStatMods();
+
+            StatsGeneratorForm frm = new StatsGeneratorForm(_stats, raceStatMods, classStatMods);
+
+            if (frm.ShowDialog() == DialogResult.OK)
+            {
+                _entityStats = frm.GetStats();
+
+                cbStats.Items.Clear();
+
+                int baseSP = 0;
+
+                for (int i = 0; i < _entityStats.Count; i++)
+                {
+                    cbStats.Items.Add(((Stat)_stats[i]).Name + ": " + _entityStats[i].CurrentValue.ToString());
+
+                    //calculate skill points
+                    for (int lev = 0; lev < Convert.ToInt16(txtLevel.Text); lev++)
+                        baseSP += GlobalFunctions.GetSPForStat(_entityStats[i].CurrentValue);
+                }
+
+                txtBaseSP.Text = baseSP.ToString();
+                txtCurSP.Text = txtBaseSP.Text;
+
+                //get strength and constitution values
+                int str = 0;
+                int con = 0;
+                DieType hitDice = DieType.d6;   //default hit dice
+
+                if (cbClass.SelectedIndex > 0)
+                    hitDice = _classes[cbClass.SelectedIndex - 1].HPDice;
+
+                txtBaseHP.Text = (GlobalFunctions.GetRandomHPDieTotal(Convert.ToInt16(txtLevel.Text), hitDice) + ((str + con) / 2)).ToString();
+                txtCurHP.Text = txtBaseHP.Text;
+
+            }
+
+            frm.Close();
+        }
+
+        private void EntitiesForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (!_saved)
+                SaveEntities();
+
+        }
+
+        private void btnSkills_Click(object sender, EventArgs e)
+        {
+            SkillsSelectionForm frm = new SkillsSelectionForm(_skills, _classes[cbClass.SelectedIndex - 1].Name, _entitySkills, Convert.ToInt16(txtCurSP.Text));
+
+            if (frm.ShowDialog() == DialogResult.OK)
+            {
+                _entitySkills = frm.SelectedSkills;
+                txtCurSP.Text = frm.SkillPointsLeft.ToString();
+
+                cbSkills.Items.Clear();
+
+                foreach (KeyValuePair<int, int> kvp in _entitySkills)
+                    cbSkills.Items.Add(_skills[kvp.Key].Name + " - " + kvp.Value.ToString());
+            }
+        }
     }
 }

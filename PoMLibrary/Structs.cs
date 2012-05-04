@@ -28,6 +28,13 @@ namespace PoMLibrary
         public int Max;
         public int Amount;
 
+        public MinMaxBonus(int min, int max, int amount)
+        {
+            Min = min;
+            Max = max;
+            Amount = amount;
+        }
+
         public bool IsValueInRange(int value)
         {
             return (value >= Min && value <= Max);

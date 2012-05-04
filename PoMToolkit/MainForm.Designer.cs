@@ -37,6 +37,7 @@
             this.mnuRaces = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuClasses = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuEntities = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuSkills = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
@@ -45,6 +46,7 @@
             this.tbRaces = new System.Windows.Forms.ToolStripButton();
             this.tbClasses = new System.Windows.Forms.ToolStripButton();
             this.tbEntities = new System.Windows.Forms.ToolStripButton();
+            this.tbSkills = new System.Windows.Forms.ToolStripButton();
             this.menuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -56,7 +58,8 @@
             this.mnuStats,
             this.mnuRaces,
             this.mnuClasses,
-            this.mnuEntities});
+            this.mnuEntities,
+            this.mnuSkills});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(804, 24);
@@ -118,6 +121,14 @@
             this.mnuEntities.Text = "Entities";
             this.mnuEntities.Click += new System.EventHandler(this.ShowEntitiesForm);
             // 
+            // mnuSkills
+            // 
+            this.mnuSkills.Enabled = false;
+            this.mnuSkills.Name = "mnuSkills";
+            this.mnuSkills.Size = new System.Drawing.Size(45, 20);
+            this.mnuSkills.Text = "Skills";
+            this.mnuSkills.Click += new System.EventHandler(this.ShowSkillsForm);
+            // 
             // toolStrip1
             // 
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -127,7 +138,8 @@
             this.tbStats,
             this.tbRaces,
             this.tbClasses,
-            this.tbEntities});
+            this.tbEntities,
+            this.tbSkills});
             this.toolStrip1.Location = new System.Drawing.Point(0, 24);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(804, 25);
@@ -203,6 +215,17 @@
             this.tbEntities.Text = "toolStripButton3";
             this.tbEntities.Click += new System.EventHandler(this.ShowEntitiesForm);
             // 
+            // tbSkills
+            // 
+            this.tbSkills.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tbSkills.Enabled = false;
+            this.tbSkills.Image = ((System.Drawing.Image)(resources.GetObject("tbSkills.Image")));
+            this.tbSkills.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tbSkills.Name = "tbSkills";
+            this.tbSkills.Size = new System.Drawing.Size(23, 22);
+            this.tbSkills.Text = "toolStripButton3";
+            this.tbSkills.Click += new System.EventHandler(this.ShowSkillsForm);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -241,5 +264,7 @@
         private System.Windows.Forms.ToolStripMenuItem mnuRaces;
         private System.Windows.Forms.ToolStripMenuItem mnuClasses;
         private System.Windows.Forms.ToolStripMenuItem mnuEntities;
+        private System.Windows.Forms.ToolStripMenuItem mnuSkills;
+        private System.Windows.Forms.ToolStripButton tbSkills;
     }
 }

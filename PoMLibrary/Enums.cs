@@ -82,4 +82,22 @@ namespace PoMLibrary
         Poison
     }
 
+    public enum SkillType
+    {
+        Defensive,
+        NonCombat,
+        Offensive
+    }
+
+    public enum Difficulty
+    {
+        Impossible = -50,
+        VEryHard = -25,
+        Hard = -10,
+        Normal = 0,
+        Easy = 10,
+        VeryEasy = 25
+    }
+
+
 }

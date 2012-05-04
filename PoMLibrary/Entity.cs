@@ -54,27 +54,19 @@ namespace PoMLibrary
 
         private string _spriteFilename;
 
+        private Dictionary<int, int> _skills;
+
+        private int _curSP;
+        private int _baseSP;
+
+        //used for things like hiding and spells
+        private bool _isVisible;
+
+        private Object _target;
+
         #endregion
 
         #region Property Functions
-
-        public int MaxWeight()
-        {
-            int str = 0;
-
-            // Find the strength stat
-            foreach (EntityStat stat in _stats)
-            {
-                if (stat.StatName.ToLower() == "strength")
-                {
-                    str = stat.CurrentValue;
-                    break;
-                }
-            }
-
-            return str * Stat.poundsPerStatPoint;
-
-        }
 
         public EntityType Type
         {
@@ -240,6 +232,24 @@ namespace PoMLibrary
             set { _spriteFilename = value; }
         }
 
+        public Dictionary<int, int> Skills
+        {
+            get { return _skills; }
+            set { _skills = value; }
+        }
+
+        public int CurSP
+        {
+            get { return _curSP; }
+            set { if (value >= 0) _curSP = value; }
+        }
+
+        public int BaseSP
+        {
+            get { return _baseSP; }
+            set { if (value >= 0) _baseSP = value; }
+        }
+
         #endregion
 
 
@@ -247,6 +257,99 @@ namespace PoMLibrary
         public Entity()
         {
             _stats = new List<EntityStat>();
+        }
+
+        public int MaxWeight()
+        {
+            int str = 0;
+
+            // Find the strength stat
+            foreach (EntityStat stat in _stats)
+            {
+                if (stat.StatName.ToLower() == "strength")
+                {
+                    str = stat.CurrentValue;
+                    break;
+                }
+            }
+
+            return str * Stat.poundsPerStatPoint;
+
+        }
+
+        public void AddSkill(int id, int ranks)
+        {
+            if (_skills == null)
+                _skills = new Dictionary<int, int>();
+            _skills.Add(id, ranks);
+        }
+
+        public void SetSkills(Dictionary<int, int> skills)
+        {
+            _skills = skills;
+        }
+
+        public bool HasSkill(int key)
+        {
+            if (_skills != null)
+                return _skills.ContainsKey(key);
+            else
+                return false;
+        }
+
+        public void Damage(int amount, DamageType type)
+        {
+            //reduce amount based on damagetype protection
+            foreach (Damager damager in _damageResistances)
+            {
+                if (damager.Type == type)
+                    amount -= GlobalFunctions.GetRangeAmount(damager.DamageAmount);
+            }
+
+            _curHP -= (short)amount;
+
+            if (_curHP <= 0)
+            {
+                //entity is dead
+            }
+        }
+
+        public void Buff(int amount, BonusType type)
+        {
+            switch (type)
+            {
+
+            }
+
+        }
+
+        public void UseSkill(int key, Difficulty difficulty)
+        {
+            int result;
+            Entity entity = this;
+
+            if (GlobalData.Skills[key].Use(ref _target, ref entity, difficulty, out result))
+            {
+                // SkillManager.UseSkill(key, ref _target, ref entity, result);
+            }
+        }
+
+
+        public int GetSkillValueByID(int id)
+        {
+            if (HasSkillByID(id))
+                return GlobalFunctions.CalculateSkillBonus(_skills[id]);
+            else
+                return 0;
+        }
+
+        public bool HasSkillByID(int id)
+        {
+            foreach (int key in _skills.Keys)
+                if (key == id)
+                    return true;
+
+            return false;
         }
 
         #region Bonus Functions
@@ -374,7 +477,7 @@ namespace PoMLibrary
             _damageResistances.Add(resistance);
         }
 
-        public void SetDamageResistnaces(List<Damager> resistances)
+        public void SetDamageResistances(List<Damager> resistances)
         {
             if (resistances != null)
             {
