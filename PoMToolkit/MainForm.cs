@@ -120,6 +120,13 @@ namespace PoMToolkit
                         classesLoaded = true;
                     }
 
+                    if (Directory.GetFiles(Application.StartupPath + @"\Games\" + _game.GameName + @"\entities").Length > 0 ||
+                        (classesLoaded && racesLoaded && statsLoaded))
+                    {
+                        mnuEntities.Enabled = true;
+                        tbEntities.Enabled = true;
+                    }
+
 
 
                 }
@@ -174,6 +181,21 @@ namespace PoMToolkit
             if (frm == null)
             {
                 frm = new ClassesForm(_game.GameName);
+                frm.MdiParent = this;
+                frm.Show();
+            }
+            else
+                frm.Activate();
+        }
+
+        private void ShowEntitiesForm(object sender, EventArgs e)
+        {
+
+            BaseForm frm = GetChildForm("EntitiesForm");
+
+            if (frm == null)
+            {
+                frm = new EntitiesForm(_game.GameName);
                 frm.MdiParent = this;
                 frm.Show();
             }

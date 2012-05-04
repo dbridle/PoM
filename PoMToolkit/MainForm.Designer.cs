@@ -44,7 +44,7 @@
             this.tbStats = new System.Windows.Forms.ToolStripButton();
             this.tbRaces = new System.Windows.Forms.ToolStripButton();
             this.tbClasses = new System.Windows.Forms.ToolStripButton();
-            this.tbEntity = new System.Windows.Forms.ToolStripButton();
+            this.tbEntities = new System.Windows.Forms.ToolStripButton();
             this.menuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -116,6 +116,7 @@
             this.mnuEntities.Name = "mnuEntities";
             this.mnuEntities.Size = new System.Drawing.Size(57, 20);
             this.mnuEntities.Text = "Entities";
+            this.mnuEntities.Click += new System.EventHandler(this.ShowEntitiesForm);
             // 
             // toolStrip1
             // 
@@ -126,7 +127,7 @@
             this.tbStats,
             this.tbRaces,
             this.tbClasses,
-            this.tbEntity});
+            this.tbEntities});
             this.toolStrip1.Location = new System.Drawing.Point(0, 24);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(804, 25);
@@ -191,15 +192,16 @@
             this.tbClasses.Text = "toolStripButton3";
             this.tbClasses.Click += new System.EventHandler(this.ShowClassesForm);
             // 
-            // tbEntity
+            // tbEntities
             // 
-            this.tbEntity.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tbEntity.Enabled = false;
-            this.tbEntity.Image = ((System.Drawing.Image)(resources.GetObject("tbEntity.Image")));
-            this.tbEntity.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tbEntity.Name = "tbEntity";
-            this.tbEntity.Size = new System.Drawing.Size(23, 22);
-            this.tbEntity.Text = "toolStripButton3";
+            this.tbEntities.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tbEntities.Enabled = false;
+            this.tbEntities.Image = ((System.Drawing.Image)(resources.GetObject("tbEntities.Image")));
+            this.tbEntities.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tbEntities.Name = "tbEntities";
+            this.tbEntities.Size = new System.Drawing.Size(23, 22);
+            this.tbEntities.Text = "toolStripButton3";
+            this.tbEntities.Click += new System.EventHandler(this.ShowEntitiesForm);
             // 
             // MainForm
             // 
@@ -235,7 +237,7 @@
         private System.Windows.Forms.ToolStripButton tbStats;
         private System.Windows.Forms.ToolStripButton tbRaces;
         private System.Windows.Forms.ToolStripButton tbClasses;
-        private System.Windows.Forms.ToolStripButton tbEntity;
+        private System.Windows.Forms.ToolStripButton tbEntities;
         private System.Windows.Forms.ToolStripMenuItem mnuRaces;
         private System.Windows.Forms.ToolStripMenuItem mnuClasses;
         private System.Windows.Forms.ToolStripMenuItem mnuEntities;

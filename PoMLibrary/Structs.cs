@@ -5,6 +5,12 @@ using System.Text;
 
 namespace PoMLibrary
 {
+
+    public struct BaseBonus
+    {
+        public short Amount;
+    }
+
     // This struct is for calculating bonuses, for example, when drinking a potion that gives
     // a timed stat bonus
     public struct Bonus
@@ -14,6 +20,18 @@ namespace PoMLibrary
         public int TimeStarted;
         public int Duration;
         public float ElapsedTime;
+    }
+
+    public struct MinMaxBonus
+    {
+        public int Min;
+        public int Max;
+        public int Amount;
+
+        public bool IsValueInRange(int value)
+        {
+            return (value >= Min && value <= Max);
+        }
     }
 
     public struct Damager
@@ -33,6 +51,17 @@ namespace PoMLibrary
         public int Amount;
     }
 
+    public struct EntityLevel
+    {
+        public int MinExperience;
+        public int MaxExperience;
+
+        public EntityLevel(int min, int max)
+        {
+            MinExperience = min;
+            MaxExperience = max;
+        }
+    }
 
 
        

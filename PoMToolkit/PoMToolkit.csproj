@@ -77,6 +77,12 @@
     <Compile Include="BaseForm.Designer.cs">
       <DependentUpon>BaseForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="BonusesForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BonusesForm.Designer.cs">
+      <DependentUpon>BonusesForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="CalculatedStatConfigForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -88,6 +94,18 @@
     </Compile>
     <Compile Include="ClassesForm.Designer.cs">
       <DependentUpon>ClassesForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DamageSelectionForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DamageSelectionForm.Designer.cs">
+      <DependentUpon>DamageSelectionForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EntitiesForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EntitiesForm.Designer.cs">
+      <DependentUpon>EntitiesForm.cs</DependentUpon>
     </Compile>
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
@@ -121,11 +139,20 @@
     <Compile Include="StatsForm.Designer.cs">
       <DependentUpon>StatsForm.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="BonusesForm.resx">
+      <DependentUpon>BonusesForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="CalculatedStatConfigForm.resx">
       <DependentUpon>CalculatedStatConfigForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ClassesForm.resx">
       <DependentUpon>ClassesForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DamageSelectionForm.resx">
+      <DependentUpon>DamageSelectionForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EntitiesForm.resx">
+      <DependentUpon>EntitiesForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>

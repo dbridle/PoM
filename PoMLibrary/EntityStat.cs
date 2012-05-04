@@ -5,10 +5,9 @@ using System.Text;
 
 namespace PoMLibrary
 {
-    class EntityStat
+    public class EntityStat
     {
        
-
         private string _stat;
         private short _value;
         private List<Bonus> _bonuses;
