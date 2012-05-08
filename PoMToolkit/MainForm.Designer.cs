@@ -236,6 +236,7 @@
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "MainForm";
+            this.Tag = "PoM Toolkit";
             this.Text = "PoM Toolkit";
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();

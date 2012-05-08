@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework.Graphics;
 
@@ -17,6 +16,7 @@ namespace PoMLibrary
         private int _opposingSkill;
 
         private bool _alwaysOn;
+
         private Dictionary<string, string> _costs;
         private Dictionary<string, int> _classBonuses;
         private List<MinMaxBonus> _levelBonuses;
@@ -28,57 +28,57 @@ namespace PoMLibrary
         [NonSerialized]
         private Texture2D _icon;
 
-#region Properties
+        #region Properties
 
         public int ID
         {
-            get {return _id;}
-            set {if (value > 0) _id = value;}
+            get { return _id; }
+            set { if (value > 0) _id = value; }
         }
 
         public string Name
         {
-            get {return _name;}
-            set {if (!string.IsNullOrEmpty(value)) _name = value;}
+            get { return _name; }
+            set { if (!string.IsNullOrEmpty(value)) _name = value; }
         }
 
         public string Description
         {
-            get {return _description;}
-            set {if (!string.IsNullOrEmpty(value)) _description = value;}
+            get { return _description; }
+            set { if (!string.IsNullOrEmpty(value)) _description = value; }
         }
 
         public SkillType Type
         {
-            get {return _type;}
-            set {_type = value;}
+            get { return _type; }
+            set { _type = value; }
         }
 
         public int OpposingSkill
         {
-            get {return _opposingSkill;}
-            set {_opposingSkill = value;}
+            get { return _opposingSkill; }
+            set { _opposingSkill = value; }
         }
 
         public bool AlwaysOn
         {
-            get {return _alwaysOn;}
-            set {_alwaysOn = value;}
+            get { return _alwaysOn; }
+            set { _alwaysOn = value; }
         }
 
         public string IconFilename
         {
-            get {return _iconFilename;}
-            set {_iconFilename = value;}
+            get { return _iconFilename; }
+            set { _iconFilename = value; }
         }
 
         public Texture2D Icon
         {
-            get {return _icon;}
-            set {_icon = value;}
+            get { return _icon; }
+            set { _icon = value; }
         }
 
-#endregion
+        #endregion
 
         public Skill()
         {
@@ -96,7 +96,7 @@ namespace PoMLibrary
             _alwaysOn = false;
         }
 
-#region Cost Functions
+        #region Cost Functions
 
         public bool AddCost(string id, string cost)
         {
@@ -130,47 +130,12 @@ namespace PoMLibrary
         public Dictionary<string, string> Costs
         {
             get { return _costs; }
+            set { _costs = value; }
         }
 
-#endregion
+        #endregion
 
-#region Race Bonus Functions
-
-        public void AddRaceBonus(string id, int bonus)
-        {
-            if (_raceBonuses == null)
-                _raceBonuses = new Dictionary<string, int>();
-
-            if (!_raceBonuses.ContainsKey(id))
-                _raceBonuses.Add(id, bonus);
-
-        }
-
-        public void RemoveRaceBonus(string id)
-        {
-            if (_raceBonuses != null)
-                _raceBonuses.Remove(id);
-        }
-
-        public int GetRaceBonus(string id)
-        {
-            int bonus = 0;
-
-            if (_raceBonuses != null)
-                _raceBonuses.TryGetValue(id, out bonus);
-
-            return bonus;
-        }
-
-        public Dictionary<string, int> RaceBonuses
-        {
-            get { return _raceBonuses; }
-            set { _raceBonuses = value; }
-        }
-
-#endregion
-
-#region Class Bonus Functions
+        #region Class Bonus Functions
 
         public bool AddClassBonus(string id, int bonus)
         {
@@ -210,7 +175,43 @@ namespace PoMLibrary
 
         #endregion
 
-#region Stat Bonus Functions
+        #region Race Bonus Functions
+
+        public void AddRaceBonus(string id, int bonus)
+        {
+            if (_raceBonuses == null)
+                _raceBonuses = new Dictionary<string, int>();
+
+            if (!_raceBonuses.ContainsKey(id))
+                _raceBonuses.Add(id, bonus);
+
+        }
+
+        public void RemoveRaceBonus(string id)
+        {
+            if (_raceBonuses != null)
+                _raceBonuses.Remove(id);
+        }
+
+        public int GetRaceBonus(string id)
+        {
+            int bonus = 0;
+
+            if (_raceBonuses != null)
+                _raceBonuses.TryGetValue(id, out bonus);
+
+            return bonus;
+        }
+
+        public Dictionary<string, int> RaceBonuses
+        {
+            get { return _raceBonuses; }
+            set { _raceBonuses = value; }
+        }
+
+        #endregion
+
+        #region Stat Bonus Functions
 
         public void AddStatBonus(string id, MinMaxBonus bonus)
         {
@@ -244,9 +245,9 @@ namespace PoMLibrary
             set { _statBonuses = value; }
         }
 
-#endregion
-        
-#region Level Bonus Functions
+        #endregion
+
+        #region Level Bonus Functions
 
         public void AddLevelBonus(MinMaxBonus bonus)
         {
@@ -283,9 +284,8 @@ namespace PoMLibrary
             set { _levelBonuses = value; }
         }
 
-#endregion
+        #endregion
 
-        
         public bool Use(ref Object target, ref Entity entity, Difficulty difficulty, out int result)
         {
             int roll;
@@ -328,7 +328,7 @@ namespace PoMLibrary
                 }
             }
 
-            foreach (KeyValuePair<string,int> kvp in _raceBonuses)
+            foreach (KeyValuePair<string, int> kvp in _raceBonuses)
             {
                 if (entity.RaceID == kvp.Key)
                 {
@@ -360,52 +360,52 @@ namespace PoMLibrary
             }
             //else
             //{
-                //    short level = entity.Level;
-                //    //use default
-                //    switch (level)
-                //    {
-                //        case 1:
-                //        case 2:
-                //        case 3:
-                //        case 4:
-                //        case 5:
-                //        {
-                //            bns = (short)(10 * level);
-                //            break;
-                //        }
-                //        case 6:
-                //        case 7:
-                //        case 8:
-                //        case 9:
-                //        case 10:
-                //        {
-                //            bns = (short)(50 + (5 * (level - 5)));
-                //            break;
-                //        }
-                //        case 11:
-                //        case 12:
-                //        case 13:
-                //        case 14:
-                //        case 15:
-                //        {
-                //            bns = (short)(75 + (3 * (level - 10)));
-                //            break;
-                //        }
-                //        case 16:
-                //        case 17:
-                //        case 18:
-                //        case 19:
-                //        case 20:
-                //        {
-                //            bns = (short)(90 + (2 * (level - 15)));
-                //            break;
-                //        }
-                //        default:
-                //        {
-                //            bns = (short)(100 + (1 * (level - 20)));
-                //            break;
-                //        }
-                //    }
+            //    short level = entity.Level;
+            //    //use default
+            //    switch (level)
+            //    {
+            //        case 1:
+            //        case 2:
+            //        case 3:
+            //        case 4:
+            //        case 5:
+            //        {
+            //            bns = (short)(10 * level);
+            //            break;
+            //        }
+            //        case 6:
+            //        case 7:
+            //        case 8:
+            //        case 9:
+            //        case 10:
+            //        {
+            //            bns = (short)(50 + (5 * (level - 5)));
+            //            break;
+            //        }
+            //        case 11:
+            //        case 12:
+            //        case 13:
+            //        case 14:
+            //        case 15:
+            //        {
+            //            bns = (short)(75 + (3 * (level - 10)));
+            //            break;
+            //        }
+            //        case 16:
+            //        case 17:
+            //        case 18:
+            //        case 19:
+            //        case 20:
+            //        {
+            //            bns = (short)(90 + (2 * (level - 15)));
+            //            break;
+            //        }
+            //        default:
+            //        {
+            //            bns = (short)(100 + (1 * (level - 20)));
+            //            break;
+            //        }
+            //    }
 
             //}
 
@@ -416,6 +416,5 @@ namespace PoMLibrary
             return (roll >= 100);
 
         }
-
     }
 }

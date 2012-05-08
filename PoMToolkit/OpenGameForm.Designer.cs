@@ -29,11 +29,11 @@
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
-            this.cbGames = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.txtDescription = new System.Windows.Forms.TextBox();
             this.btnOK = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
+            this.lstGames = new System.Windows.Forms.ListBox();
             this.SuspendLayout();
             // 
             // label1
@@ -45,19 +45,10 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Select Game";
             // 
-            // cbGames
-            // 
-            this.cbGames.FormattingEnabled = true;
-            this.cbGames.Location = new System.Drawing.Point(122, 30);
-            this.cbGames.Name = "cbGames";
-            this.cbGames.Size = new System.Drawing.Size(339, 21);
-            this.cbGames.TabIndex = 1;
-            this.cbGames.SelectedValueChanged += new System.EventHandler(this.cbGames_SelectedValueChanged);
-            // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(39, 79);
+            this.label2.Location = new System.Drawing.Point(39, 234);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(60, 13);
             this.label2.TabIndex = 2;
@@ -65,7 +56,7 @@
             // 
             // txtDescription
             // 
-            this.txtDescription.Location = new System.Drawing.Point(122, 76);
+            this.txtDescription.Location = new System.Drawing.Point(128, 234);
             this.txtDescription.Multiline = true;
             this.txtDescription.Name = "txtDescription";
             this.txtDescription.Size = new System.Drawing.Size(339, 169);
@@ -75,7 +66,7 @@
             // 
             this.btnOK.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.btnOK.Enabled = false;
-            this.btnOK.Location = new System.Drawing.Point(182, 266);
+            this.btnOK.Location = new System.Drawing.Point(188, 424);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(75, 23);
             this.btnOK.TabIndex = 4;
@@ -85,23 +76,32 @@
             // btnCancel
             // 
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.Location = new System.Drawing.Point(292, 266);
+            this.btnCancel.Location = new System.Drawing.Point(298, 424);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
             this.btnCancel.TabIndex = 5;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
             // 
+            // lstGames
+            // 
+            this.lstGames.FormattingEnabled = true;
+            this.lstGames.Location = new System.Drawing.Point(128, 33);
+            this.lstGames.Name = "lstGames";
+            this.lstGames.Size = new System.Drawing.Size(339, 186);
+            this.lstGames.TabIndex = 6;
+            this.lstGames.SelectedIndexChanged += new System.EventHandler(this.lstGames_SelectedValueChanged);
+            // 
             // OpenGameForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(517, 301);
+            this.ClientSize = new System.Drawing.Size(517, 465);
+            this.Controls.Add(this.lstGames);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnOK);
             this.Controls.Add(this.txtDescription);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.cbGames);
             this.Controls.Add(this.label1);
             this.Name = "OpenGameForm";
             this.Text = "OpenGameForm";
@@ -113,10 +113,10 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ComboBox cbGames;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtDescription;
         private System.Windows.Forms.Button btnOK;
         private System.Windows.Forms.Button btnCancel;
+        private System.Windows.Forms.ListBox lstGames;
     }
 }

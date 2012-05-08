@@ -40,13 +40,13 @@ namespace PoMToolkit
 
             if (games != null)
                 foreach (string game in games)
-                    cbGames.Items.Add(game.Substring(game.LastIndexOf(@"\") + 1));
+                    lstGames.Items.Add(game.Substring(game.LastIndexOf(@"\") + 1));
         
         }
 
-        private void cbGames_SelectedValueChanged(object sender, EventArgs e)
+        private void lstGames_SelectedValueChanged(object sender, EventArgs e)
         {
-            if (cbGames.SelectedIndex > -1)
+            if (lstGames.SelectedIndex > -1)
             {
                 btnOK.Enabled = true;
 
@@ -54,8 +54,8 @@ namespace PoMToolkit
                 XmlSerializer serializer = new XmlSerializer(typeof(RPGGame));
 
                 FileStream stream = new FileStream(Application.StartupPath +
-                                                    @"\games\" + cbGames.SelectedItem.ToString() +
-                                                    @"\" + cbGames.SelectedItem.ToString() + ".gdf", FileMode.Open);
+                                                    @"\games\" + lstGames.SelectedItem.ToString() +
+                                                    @"\" + lstGames.SelectedItem.ToString() + ".gdf", FileMode.Open);
 
                 RPGGame game;
                 game = (RPGGame)serializer.Deserialize(stream);

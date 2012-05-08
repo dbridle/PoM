@@ -7,7 +7,6 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-
 using System.Xml;
 using System.Xml.Serialization;
 
@@ -21,10 +20,83 @@ namespace PoMToolkit
     {
 
         private RPGGame _game;
-        
+
+        private delegate void showForm(object obj, EventArgs ev);
+
         public MainForm()
         {
             InitializeComponent();
+
+            //create RPG Games folder if it doesn't exist
+            if (!Directory.Exists(Application.StartupPath + @"\Games"))
+                Directory.CreateDirectory(Application.StartupPath + @"\Games");
+        }
+
+        private void OpenFile(object sender, EventArgs e)
+        {
+            string ext = "";
+            showForm showform;
+
+            switch (((Control)sender).Tag.ToString())
+            {
+                case "Stats":
+                    {
+                        ext = "*.sdf";
+                        showform = new showForm(ShowStatsForm);
+
+                        break;
+                    }
+                case "Races":
+                    {
+                        ext = "*.rdf";
+                        showform = new showForm(ShowRacesForm);
+
+                        break;
+                    }
+                case "Classes":
+                    {
+                        ext = "*.cdf";
+                        showform = new showForm(ShowClassesForm);
+
+                        break;
+                    }
+                case "Entities":
+                    {
+                        ext = "*.edf";
+                        showform = new showForm(ShowEntitiesForm);
+
+                        break;
+                    }
+                default:
+                    {
+                        showform = new showForm(ShowNoForm);
+
+                        break;
+                    }
+            }
+
+            OpenFileDialog dlg = new OpenFileDialog();
+
+            dlg.DefaultExt = ext;
+
+            if (dlg.ShowDialog() == DialogResult.OK)
+            {
+                //need to worry about trying to copy a file over itself
+                try
+                {
+                    File.Copy(dlg.FileName, Application.StartupPath + @"\Games\" + dlg.SafeFileName);
+                    showform(sender, e);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
+        }
+
+        private void ShowNoForm(object sender, EventArgs e)
+        {
+            //does nothing and should never be called, just needed for code to compile
         }
 
 
@@ -69,6 +141,23 @@ namespace PoMToolkit
                     serializer.Serialize(stream, _game);
 
                     stream.Close();
+
+                    //enable stats menu and button for now since 
+                    //it's the only one that doesn't have a pre-requisite
+                    tbStats.Enabled = true;
+                    mnuStats.Enabled = true;
+
+                    mnuClasses.Enabled = false;
+                    tbClasses.Enabled = false;
+
+                    mnuRaces.Enabled = false;
+                    tbRaces.Enabled = false;
+
+                    mnuEntities.Enabled = false;
+                    tbEntities.Enabled = false;
+
+                    mnuSkills.Enabled = false;
+                    tbSkills.Enabled = false;
                 }
             }
         }
@@ -86,6 +175,8 @@ namespace PoMToolkit
                     _game.GameName = frm.GameName;
                     _game.Description = frm.GameDescription;
 
+                    this.Text = this.Tag + (" - " + frm.GameName);
+                    
                     mnuStats.Enabled = true;
                     tbStats.Enabled = true;
 
