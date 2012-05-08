@@ -218,8 +218,7 @@ namespace PoMToolkit
                     }
                     else
                     {
-                        mnuRaces.Enabled = false;
-                        tbRaces.Enabled = false;
+
 
                         racesLoaded = false;
                     }
@@ -233,8 +232,6 @@ namespace PoMToolkit
                     }
                     else
                     {
-                        mnuClasses.Enabled = false;
-                        tbClasses.Enabled = false;
 
                         classesLoaded = false;
                     }
@@ -247,8 +244,6 @@ namespace PoMToolkit
                     }
                     else
                     {
-                        mnuEntities.Enabled = false;
-                        tbEntities.Enabled = false;
                     }
 
                     if (Directory.GetFiles(Application.StartupPath + @"\Games\" + _game.GameName + @"\skills").Length > 0 ||
@@ -259,8 +254,6 @@ namespace PoMToolkit
                     }
                     else
                     {
-                        mnuSkills.Enabled = false;
-                        tbSkills.Enabled = false;
                     }
 
                 }

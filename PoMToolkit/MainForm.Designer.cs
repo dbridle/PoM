@@ -190,7 +190,7 @@
             this.tbRaces.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tbRaces.Name = "tbRaces";
             this.tbRaces.Size = new System.Drawing.Size(23, 22);
-            this.tbRaces.Text = "toolStripButton4";
+            this.tbRaces.Text = "Races";
             this.tbRaces.Click += new System.EventHandler(this.ShowRacesForm);
             // 
             // tbClasses
@@ -201,7 +201,7 @@
             this.tbClasses.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tbClasses.Name = "tbClasses";
             this.tbClasses.Size = new System.Drawing.Size(23, 22);
-            this.tbClasses.Text = "toolStripButton3";
+            this.tbClasses.Text = "Classes";
             this.tbClasses.Click += new System.EventHandler(this.ShowClassesForm);
             // 
             // tbEntities
@@ -212,7 +212,7 @@
             this.tbEntities.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tbEntities.Name = "tbEntities";
             this.tbEntities.Size = new System.Drawing.Size(23, 22);
-            this.tbEntities.Text = "toolStripButton3";
+            this.tbEntities.Text = "Entities";
             this.tbEntities.Click += new System.EventHandler(this.ShowEntitiesForm);
             // 
             // tbSkills
@@ -223,7 +223,7 @@
             this.tbSkills.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tbSkills.Name = "tbSkills";
             this.tbSkills.Size = new System.Drawing.Size(23, 22);
-            this.tbSkills.Text = "toolStripButton3";
+            this.tbSkills.Text = "Skills";
             this.tbSkills.Click += new System.EventHandler(this.ShowSkillsForm);
             // 
             // MainForm

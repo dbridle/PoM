@@ -4,6 +4,7 @@ using System.Xml;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -175,7 +176,10 @@ namespace PoMToolkit
                     val = GetStatIDForListItem(temp);
 
                     if (val != "")
+                    {
+                        Debug.WriteLine("Adding to class structure: " + val + Convert.ToInt32(temp.Substring(temp.IndexOf(":") + 1).Trim()));
                         _class.AddStatModifier(val, Convert.ToInt32(temp.Substring(temp.IndexOf(":") + 1).Trim()));
+                    }
                     else
                         MessageBox.Show("Stat ID not found for item: " + temp);
                 }
@@ -245,6 +249,7 @@ namespace PoMToolkit
             if (!ret)
             {
                 cbModifiers.Items.Add(cbStats.SelectedItem.ToString() + ": " + txtAmount.Text);
+                Debug.WriteLine("Adding item: " + cbStats.SelectedItem.ToString() + ": " + txtAmount.Text);
                 txtAmount.Text = "";
                 cbStats.SelectedIndex = -1;
             }

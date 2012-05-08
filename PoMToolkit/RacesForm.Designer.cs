@@ -232,13 +232,13 @@
             this.rbWeakness.Name = "rbWeakness";
             this.rbWeakness.Size = new System.Drawing.Size(76, 17);
             this.rbWeakness.TabIndex = 13;
-            this.rbWeakness.TabStop = true;
             this.rbWeakness.Text = "Weakness";
             this.rbWeakness.UseVisualStyleBackColor = true;
             // 
             // rbResistance
             // 
             this.rbResistance.AutoSize = true;
+            this.rbResistance.Checked = true;
             this.rbResistance.Location = new System.Drawing.Point(203, 111);
             this.rbResistance.Name = "rbResistance";
             this.rbResistance.Size = new System.Drawing.Size(78, 17);

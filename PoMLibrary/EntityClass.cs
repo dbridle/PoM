@@ -66,7 +66,7 @@ namespace PoMLibrary
             if (_statModifiers == null)
                 _statModifiers = new Dictionary<string,int>();
             
-            _statModifiers.Add(Name, value);
+            _statModifiers.Add(name, value);
         }
 
         public void RemoveStatModifier(string name)

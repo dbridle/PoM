@@ -131,7 +131,7 @@ namespace PoMToolkit
                 int val;
                 Modifier modifier;
 
-                for (int i = 0; i < lstModifierTypes.Items.Count; i++)
+                for (int i = 0; i < lstWRs.Items.Count; i++)
                 {
                     item = lstWRs.Items[i].ToString();
                     type = item.Substring(0, item.IndexOf("-")).Trim();
